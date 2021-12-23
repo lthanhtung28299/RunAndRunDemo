@@ -12,7 +12,7 @@ public class Obstacle : MonoBehaviour
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
@@ -21,7 +21,6 @@ public class Obstacle : MonoBehaviour
             Destroy(gameObject);
             Instantiate(explosionpt,transform.position,explosionpt.transform.rotation);
         }
-
     }
 
 

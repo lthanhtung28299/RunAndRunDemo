@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - FxTemporaire
+  - Obstacles
+  - PlayerEyes
+  - Bot
   layers:
   - Default
   - TransparentFX
@@ -12,7 +16,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - Obstacles
   - 
   - 
   - 

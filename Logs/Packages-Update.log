@@ -61,3 +61,12 @@ The following packages were added:
   com.unity.purchasing@2.0.6
   com.unity.render-pipelines.universal@8.2.0
   com.unity.shadergraph@8.2.0
+
+=== Thu Dec 23 13:02:17 2021
+
+Packages were changed.
+Update Mode: mergeDefaultDependencies
+
+The following packages were added:
+  com.unity.postprocessing@2.2.2
+  com.unity.recorder@2.0.3-preview.1

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    [SerializeField] int scorePerCoint = 100;
+    [SerializeField] int scorePerCoin = 100;
     [SerializeField] float yAngle = 1f;
     Vector3 startingPosition;
     [SerializeField] Vector3 movementVector;
@@ -12,6 +12,7 @@ public class Coin : MonoBehaviour
     [SerializeField] float period = 2f;
     [SerializeField] ParticleSystem coinPt;
     GameManager gameManager;
+    PlayerMovement playerMv;
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.GetComponent<Obstacle>() != null)
@@ -21,7 +22,8 @@ public class Coin : MonoBehaviour
         }
         if(other.gameObject.tag == "Player")
         {
-            gameManager.AddScore(scorePerCoint);
+            gameManager.AddScore(scorePerCoin);
+            playerMv.PlayCoinSoundFX();
             Destroy(gameObject);
             Instantiate(coinPt,transform.position,coinPt.transform.rotation);
         }
@@ -29,6 +31,7 @@ public class Coin : MonoBehaviour
     }
     void Start()
     {
+        playerMv = FindObjectOfType<PlayerMovement>();
         gameManager = FindObjectOfType<GameManager>();
         startingPosition = transform.position;
     }

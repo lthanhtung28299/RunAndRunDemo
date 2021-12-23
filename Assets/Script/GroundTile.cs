@@ -1,3 +1,4 @@
+using System.Transactions;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,10 +7,11 @@ public class GroundTile : MonoBehaviour
 {
     GroundSpawner groundSpawner;
     [SerializeField] List<GameObject> obstacles;
+    [SerializeField] List<GameObject> wayPoints;
     [SerializeField] int coinsToSpawn = 5;
-    [SerializeField] [Range(0,1)] int powerUpSpawmRate;
+    [SerializeField]  int powerUpSpawmRate;
     [SerializeField] GameObject coinPrefabs;
-    [SerializeField] GameObject powerUpPrefabs;
+    [SerializeField] List<GameObject> PickUpPrefabs;
 
     void Start()
     {
@@ -19,7 +21,7 @@ public class GroundTile : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         groundSpawner.SpawnTile(true);
-        Destroy(gameObject,2);
+        Destroy(gameObject,20);
     }
 
 
@@ -34,6 +36,19 @@ public class GroundTile : MonoBehaviour
         int obstacleIndex = Random.Range(0, obstacles.Count);
         Transform spawnPoint = transform.GetChild(obstacleSpawnIndex).transform;
         Instantiate(obstacles[obstacleIndex], spawnPoint.position, Quaternion.identity, transform);
+
+        switch(obstacleSpawnIndex)
+        {
+            case 2: 
+            Instantiate(wayPoints[0],transform.GetChild(5).transform.position,Quaternion.identity);
+            break;
+            case 3: 
+            Instantiate(wayPoints[1],transform.GetChild(6).transform.position,Quaternion.identity);
+            break;
+            case 4: 
+            Instantiate(wayPoints[2],transform.GetChild(7).transform.position,Quaternion.identity);
+            break;
+        }
     }
 
     public void SpawnCoins()
@@ -49,7 +64,7 @@ public class GroundTile : MonoBehaviour
     {
         for(int i = 0; i < powerUpSpawmRate;i++)
         {
-            GameObject temp = Instantiate(powerUpPrefabs,transform);
+            GameObject temp = Instantiate(PickUpPrefabs[Random.Range(0,PickUpPrefabs.Count)],transform);
             temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
         }
     }

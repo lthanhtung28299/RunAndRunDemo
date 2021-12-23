@@ -12,6 +12,10 @@ public class PowerUp : MonoBehaviour
     [SerializeField] [Range(0,1)] float movementFactor;
     [SerializeField] float period = 2f;
     [SerializeField] ParticleSystem powerUpPt;
+    [SerializeField] ParticleSystem freezePt;
+
+    [SerializeField] bool isTrap;
+
     void Start()
     {
         playerMovement = FindObjectOfType<PlayerMovement>();
@@ -39,8 +43,17 @@ public class PowerUp : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag != "Player") return;
-        playerMovement.PowerUpActive();
+        if(isTrap)
+        {
+            playerMovement.Freeze();
+            Instantiate(freezePt, transform.position, freezePt.transform.rotation);
+        }
+        else
+        {
+            playerMovement.PowerUpActive();
+            Instantiate(powerUpPt, transform.position, powerUpPt.transform.rotation);
+        }
         Destroy(gameObject);
-        Instantiate(powerUpPt, transform.position, powerUpPt.transform.rotation);
+        
     }
 }
