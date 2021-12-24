@@ -5,14 +5,15 @@ using UnityEngine;
 
 public class GroundTile : MonoBehaviour
 {
-    GroundSpawner groundSpawner;
+    [Header("GameObject")]
     [SerializeField] List<GameObject> obstacles;
     [SerializeField] List<GameObject> wayPoints;
+    [SerializeField] List<GameObject> PickUpPrefabs;
+    [SerializeField] GameObject coinPrefabs;
+    [Header("Setting Spawn")]
     [SerializeField] int coinsToSpawn = 5;
     [SerializeField]  int powerUpSpawmRate;
-    [SerializeField] GameObject coinPrefabs;
-    [SerializeField] List<GameObject> PickUpPrefabs;
-
+    GroundSpawner groundSpawner;
     void Start()
     {
         groundSpawner = FindObjectOfType<GroundSpawner>();

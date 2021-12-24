@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class BotMovement : MonoBehaviour
 {
+    [Header("BotStats")]
     [SerializeField] float botSpeed = 1f;
+    [SerializeField] float botTurnSpeed = 0f;
+    [SerializeField] float baseTurnSpeed = 0f;
+    [SerializeField] float turnSpeed;
+    
+    [Header("BotParticle")]
+    [SerializeField] ParticleSystem winPt;
+    [SerializeField] ParticleSystem losePt;
     Rigidbody botRd;
     Animator anim;
     BoxCollider hitObstacle;
     Waypoint wayPoint;
-    [SerializeField] float botTurnSpeed = 0f;
-    [SerializeField] float baseTurnSpeed = 0f;
-    [SerializeField] float turnSpeed;
-    [SerializeField] ParticleSystem winPt;
-    [SerializeField] ParticleSystem losePt;
-    public bool isTurning = false;
     PlayerMovement playerMv;
     public bool isGamePlaying;
+    public bool isTurning = false;
 
     void Start()
     {

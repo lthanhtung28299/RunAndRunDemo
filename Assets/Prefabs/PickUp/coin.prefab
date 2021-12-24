@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4488730333457013373}
   - component: {fileID: 8290666662069270848}
   - component: {fileID: 3565025230693838388}
-  - component: {fileID: 6204641849235140902}
+  - component: {fileID: 7240134377058651114}
   m_Layer: 0
   m_Name: coin
   m_TagString: Untagged
@@ -113,7 +113,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6204641849235140902
+--- !u!114 &7240134377058651114
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1240958922678799654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85c4dffa83aa2da4790f0af8c9520024, type: 3}
+  m_Script: {fileID: 11500000, guid: ab11629a6840b0f4683444812e29326d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scorePerCoin: 100
@@ -130,5 +130,11 @@ MonoBehaviour:
   movementVector: {x: 0, y: 0.5, z: 0}
   movementFactor: 0
   period: 2
+  powerUpPt: {fileID: 5274117137952090699, guid: f24a24237491ff144af53b368a243f20,
+    type: 3}
+  freezePt: {fileID: 7230775187441091890, guid: a6d2f9e8e5ea48946af7cea2205df7ca,
+    type: 3}
   coinPt: {fileID: 7707496799360796718, guid: 133a71b4eda4ec849aeaf70789ec93e7, type: 3}
-  CoinSoundFx: {fileID: 8300000, guid: 6ff1dab2749819048bff2aa0c7a0f91a, type: 3}
+  isTrap: 0
+  isSpeedUp: 0
+  isCoin: 1

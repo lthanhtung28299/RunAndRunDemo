@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("PlayerMaterial")]
     [SerializeField] Material[] playerskins;
-    Renderer playerRender;
+    [Header("PlayerStats")]
     [SerializeField] float baseSpeed = 7f;
     [SerializeField] float boostSpeed = 15f;
     float speed;
@@ -14,10 +15,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float timeStun = 0.2f;
     [SerializeField] float powerUpDuration= 1f;
     [SerializeField] float timeFreezeDuration = 1.5f;
+    [Header("PlayerParticle")]
     [SerializeField] ParticleSystem dashFX;
     [SerializeField] ParticleSystem traceFX;
     [SerializeField] ParticleSystem playerWinPt;
     [SerializeField] ParticleSystem playerLosePt;
+    [Header("AudioClip")]
     [SerializeField] AudioClip jumpAudiFX;
     [SerializeField] AudioClip obstaclehitSoundFx;
     [SerializeField] AudioClip winSoundFX;
@@ -25,13 +28,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] AudioClip CoinSoundFX;
     [SerializeField] AudioClip speedUpSound;
     [SerializeField] AudioClip FreezeSoundFX;
+    Renderer playerRender;
     AudioSource audioSource;
     GameManager gameManager;
     Animator anim;
-    float horizontalInput;
     Rigidbody myRigidbd;
+    float horizontalInput;
     bool isOnGround;
-
     bool isGamePlay;
 
     void Start()
@@ -117,6 +120,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(playerLifes == 0)
         {
+            gameManager.GameOver();
             dashFX.Stop();
             traceFX.Stop();
             isGamePlay = false;

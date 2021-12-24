@@ -31,6 +31,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7057860925564782143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355615835767676216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab11629a6840b0f4683444812e29326d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePerCoin: 100
+  yAngle: 1
+  movementVector: {x: 0, y: 2, z: 0}
+  movementFactor: 0
+  period: 2
+  powerUpPt: {fileID: 5274117137952090699, guid: f24a24237491ff144af53b368a243f20,
+    type: 3}
+  freezePt: {fileID: 7230775187441091890, guid: a6d2f9e8e5ea48946af7cea2205df7ca,
+    type: 3}
+  coinPt: {fileID: 7707496799360796718, guid: 133a71b4eda4ec849aeaf70789ec93e7, type: 3}
+  isTrap: 0
+  isSpeedUp: 1
+  isCoin: 0
 --- !u!1001 &1355615835767532622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108,8 +133,15 @@ PrefabInstance:
       propertyPath: movementVector.y
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5532317608389220916, guid: ff8425c20040d494cb13f372bf50908a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ff8425c20040d494cb13f372bf50908a, type: 3}
+--- !u!1 &1355615835767676216 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 192886, guid: ff8425c20040d494cb13f372bf50908a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1355615835767532622}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1355615835767958422 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 427992, guid: ff8425c20040d494cb13f372bf50908a,

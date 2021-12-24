@@ -106,10 +106,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 192886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77cb63c803a0c864ea58b6ad0ea34d94, type: 3}
+  m_Script: {fileID: 11500000, guid: ab11629a6840b0f4683444812e29326d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scorePerCoin: 100
   yAngle: 1
   movementVector: {x: 0, y: 1, z: 0}
   movementFactor: 0
   period: 2
+  powerUpPt: {fileID: 5274117137952090699, guid: f24a24237491ff144af53b368a243f20,
+    type: 3}
+  freezePt: {fileID: 7230775187441091890, guid: a6d2f9e8e5ea48946af7cea2205df7ca,
+    type: 3}
+  coinPt: {fileID: 7707496799360796718, guid: 133a71b4eda4ec849aeaf70789ec93e7, type: 3}
+  isTrap: 0
+  isSpeedUp: 1
+  isCoin: 0

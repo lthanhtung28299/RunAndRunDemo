@@ -1,3 +1,7 @@
+using System.Globalization;
+using System.ComponentModel;
+using System.Timers;
+using System.Threading;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,32 +12,48 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     int Score = 0;
-    int lives;
+    int lives = 3;
+    [Header("Text")]
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI livesText;
     [SerializeField] public TextMeshProUGUI finalScoreText;
+    [SerializeField] GameObject controlPlayerText;
+    
+    [Header("GameUI")]
+    [SerializeField] GameObject mainMenuCanvas;
     [SerializeField] GameObject gamePlayCanvas;
     [SerializeField] GameObject EndGameCanvas;
     [SerializeField] GameObject pauseButton;
     [SerializeField] GameObject resumeButton;
     [SerializeField] GameObject resetGameButton;
-    [SerializeField] GameObject backMainMenuButton;
+
+    [Header("UISoundEffect")]
     [SerializeField] AudioClip UISoundFX;
     AudioSource adioS;
+
+    void Awake()
+    {
+        int numGameManager = FindObjectsOfType<GameManager>().Length;
+        if(numGameManager > 1)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
 
     void Start()
     {
         adioS = GetComponent<AudioSource>();
-        resetGameButton.SetActive(false);
-        resumeButton.SetActive(false);
-        backMainMenuButton.SetActive(false);
-        pauseButton.SetActive(true);
-        EndGameCanvas.SetActive(false);
+        Time.timeScale = 0;
+        LivesText(lives);
     }
 
     void Update()
     {
-        
+        LivesText(lives);
     }
 
     public void AddScore(int scoreToAdd)
@@ -49,25 +69,28 @@ public class GameManager : MonoBehaviour
         livesText.text = $"Live: {lives.ToString()}";
     }
 
-    public void ResetGame()
+    public void StartGame()
     {
+        controlPlayerText.SetActive(true);
+        StartCoroutine(WalkThrought());
         adioS.PlayOneShot(UISoundFX);
-        int buildIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(buildIndex);
+        mainMenuCanvas.SetActive(false);
+        gamePlayCanvas.SetActive(true);
         Time.timeScale = 1;
-        resetGameButton.SetActive(false);
-        resumeButton.SetActive(false);
-        backMainMenuButton.SetActive(false);
-        pauseButton.SetActive(true);
     }
 
     public void ReturnMainMenu()
     {
         adioS.PlayOneShot(UISoundFX);
-        SceneManager.LoadScene(0);
+        int buildIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(buildIndex);
+        mainMenuCanvas.SetActive(true);
         gamePlayCanvas.SetActive(false);
+        EndGameCanvas.SetActive(false);
+        Destroy(gameObject);
         Time.timeScale = 1;
     }
+
 
     public void GamePause()
     {
@@ -75,7 +98,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         resetGameButton.SetActive(true);
         resumeButton.SetActive(true);
-        backMainMenuButton.SetActive(true);
         pauseButton.SetActive(false);
     }
 
@@ -84,8 +106,7 @@ public class GameManager : MonoBehaviour
         adioS.PlayOneShot(UISoundFX);
         Time.timeScale = 1;
         resetGameButton.SetActive(false);
-        resumeButton.SetActive(false);
-        backMainMenuButton.SetActive(false);        
+        resumeButton.SetActive(false);    
         pauseButton.SetActive(true);
     }
 
@@ -93,5 +114,24 @@ public class GameManager : MonoBehaviour
     {
         gamePlayCanvas.SetActive(false);
         EndGameCanvas.SetActive(true);
+        StartCoroutine(StopGameRunning());
+    }
+
+    public void QuitGame()
+    {
+        adioS.PlayOneShot(UISoundFX);
+        Application.Quit();
+    }
+
+    IEnumerator WalkThrought()
+    {
+        yield return new WaitForSecondsRealtime(5);
+        controlPlayerText.SetActive(false);
+    }
+
+    IEnumerator StopGameRunning()
+    {
+        yield return new WaitForSecondsRealtime(4);
+        Time.timeScale = 0;
     }
 }
