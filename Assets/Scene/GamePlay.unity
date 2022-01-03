@@ -1132,17 +1132,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8940491710990383422, guid: 5fed62877c6291947ab69f7df576cf9f,
-        type: 3}
-      propertyPath: groundTile.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8940491710990383422, guid: 5fed62877c6291947ab69f7df576cf9f,
-        type: 3}
-      propertyPath: groundTile.Array.data[5]
-      value: 
-      objectReference: {fileID: 824787687322512435, guid: 3bbf291fb30b0cf418392928ecdf959d,
-        type: 3}
     - target: {fileID: 8940491710990383423, guid: 5fed62877c6291947ab69f7df576cf9f,
         type: 3}
       propertyPath: m_Name
